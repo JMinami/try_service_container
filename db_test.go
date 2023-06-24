@@ -18,7 +18,7 @@ func Test_select(t *testing.T) {
 	if err := row.Scan(&id, &name); err != nil {
 		panic(err)
 	}
-	if id == "id" && name == "name" {
+	if id == "id fail" && name == "name" {
 		t.Log("success")
 		return
 	}
