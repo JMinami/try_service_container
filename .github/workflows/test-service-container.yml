@@ -15,8 +15,8 @@ jobs:
       mysql:
         image: mysql:8.0.29
         env:
-          MYSQL_ROOT_PASSWORD: $DB_PASS
-          MYSQL_PASSWORD: $DB_PASS
+          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASS }}
+          MYSQL_PASSWORD: ${{ env.DB_PASS }}
         ports:
           - 3306:3306
         volumes:
