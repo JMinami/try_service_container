@@ -42,6 +42,7 @@ func newDB() (*sql.DB, error) {
 		AllowNativePasswords: true,
 	}
 
+	log.Println("config", config.FormatDSN())
 	db, err := sql.Open("mysql", config.FormatDSN())
 	if err != nil {
 		return nil, err
