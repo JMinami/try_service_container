@@ -1,0 +1,39 @@
+name: test-service-container
+run-name: run db test
+on: [push]
+
+jobs:
+  test-db:
+    runs-on: ubuntu-latest
+
+    env:
+      DB_DOMAIN: localhost
+      DB_PASS: pass
+      DB_PORT: 3306
+
+    services:
+      mysql:
+        image: mysql:8.0.29
+        env:
+          MYSQL_ROOT_PASSWORD: $DB_PASS
+        ports:
+          - 3306:3306
+        volumes:
+          - docker/mysql/initdb.d:docker-entry-initdb.d
+          - docker/mysql/db/:/var/lib/mysql
+          - docker/mysql/conf:/etc/mysql/conf.d
+      
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+      
+      - name: Run Insert
+        run: go run .
+      
+      - name: Run Test
+        run: go test . -v
+
