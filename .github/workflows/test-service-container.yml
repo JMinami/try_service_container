@@ -19,7 +19,7 @@ jobs:
         ports:
           - 3306:3306
         volumes:
-          - /docker/mysql/initdb:/docker-entrypoint-initdb.d
+          - /docker/mysql/initdb.d:/docker-entrypoint-initdb.d
           - /docker/mysql/conf:/etc/mysql/conf.d
         options: >-
           --health-cmd "mysqladmin ping"
@@ -34,6 +34,9 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.19'
+      
+      - name: Initialize MySQL
+        run: sh ./docker/mysql/initdb.d/00_init_db.sh
       
       - name: Run Insert
         run: go run .
