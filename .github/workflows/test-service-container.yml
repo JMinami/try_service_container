@@ -23,6 +23,11 @@ jobs:
           - /docker/mysql/initdb.d:/docker-entry-initdb.d
           - /docker/mysql/db/:/var/lib/mysql
           - /docker/mysql/conf:/etc/mysql/conf.d
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
       
     steps:
       - uses: actions/checkout@v3
