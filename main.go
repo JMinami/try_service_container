@@ -34,12 +34,11 @@ func main() {
 
 func newDB() (*sql.DB, error) {
 	config := mysql.Config{
-		DBName:               "test",
-		User:                 "root",
-		Passwd:               os.Getenv("DB_PASS"),
-		Addr:                 fmt.Sprintf("%s:%s", os.Getenv("DB_DOMAIN"), os.Getenv("DB_PORT")),
-		Net:                  "tcp",
-		AllowNativePasswords: true,
+		DBName: "test",
+		User:   "root",
+		Passwd: os.Getenv("DB_PASS"),
+		Addr:   fmt.Sprintf("%s:%s", os.Getenv("DB_DOMAIN"), os.Getenv("DB_PORT")),
+		Net:    "tcp",
 	}
 
 	log.Println("config", config.FormatDSN())
