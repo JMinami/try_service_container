@@ -19,9 +19,9 @@ jobs:
         ports:
           - 3306:3306
         volumes:
-          - ../../docker/mysql/initdb.d:/docker-entry-initdb.d
-          - ../../docker/mysql/db/:/var/lib/mysql
-          - ../../docker/mysql/conf:/etc/mysql/conf.d
+          - /docker/mysql/initdb.d:/docker-entry-initdb.d
+          - /docker/mysql/db/:/var/lib/mysql
+          - /docker/mysql/conf:/etc/mysql/conf.d
       
     steps:
       - uses: actions/checkout@v3
