@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
   
     env:
-      DB_DOMAIN: localhost
+      DB_DOMAIN: mysql
       DB_PASS: pass
       DB_PORT: 3306
 
