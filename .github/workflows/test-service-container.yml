@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
   
     env:
-      DB_DOMAIN: mysql
+      DB_DOMAIN: localhost
       DB_PASS: pass
       DB_PORT: 3306
 
@@ -16,6 +16,7 @@ jobs:
         image: mysql:8.0.29
         env:
           MYSQL_ROOT_PASSWORD: $DB_PASS
+          MYSQL_PASSWORD: $DB_PASS
         ports:
           - 3306:3306
         volumes:
@@ -36,4 +37,3 @@ jobs:
       
       - name: Run Test
         run: go test . -v
-
